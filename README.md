@@ -1,4 +1,4 @@
-# Technology Decision Guides
+# Agentic Governance Technology Guides
 
 This repository contains public-facing guides designed to help organizations make informed technology decisions in the rapidly evolving space of autonomous agents, AI platforms, and related infrastructure.
 
