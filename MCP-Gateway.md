@@ -29,13 +29,13 @@ Each criterion is weighted by priority: *must-have (P0)* features carry triple w
 
 The **MCP Gateway** serves as the central coordination and control layer within the Model Context Protocol ecosystem. It manages how autonomous agents (MCP Clients) interact with tools and services (MCP Servers), defining clear trust boundaries both inside and outside an organization. In essence, it is the **policy and routing hub** for all agentic traffic—governing what can talk to what, under which conditions, and with what level of visibility.
 
-<img width="1748" height="1136" alt="image" src="https://gist.github.com/user-attachments/assets/ddc19259-21a9-40e9-b470-d4c2619d98f6" />
+<img width="1748" height="1136" alt="image" src="https://github.com/user-attachments/assets/fd2816c1-ff05-4194-b4f6-e5d0233f6537" />
 
 As shown in the high-level architecture diagram, an MCP Gateway typically sits between hosted MCP Servers and the clients that use them. Within an enterprise, this allows the gateway to function as an **internal trust boundary**, unifying multiple servers into a single access layer. All requests from agents—whether they involve querying data, invoking tools, or retrieving contextual information—flow through the gateway, where they can be authenticated, authorized, and observed in real time. This ensures that internal systems remain consistent and compliant without slowing down innovation or experimentation.
 
 At the same time, the gateway also manages the **external boundary** of an organization’s trust domain. It acts as the secure bridge to external partners, ecosystems, or marketplaces of MCP clients and servers. By brokering these cross-boundary interactions, the gateway can apply enterprise policy—such as filtering prompts, enforcing rate limits, or anonymizing data—before information leaves the internal network. This dual role makes the MCP Gateway a foundational piece of infrastructure for enterprises that want to safely participate in the emerging, interconnected agent economy.
 
-<img width="954" height="1246" alt="image" src="https://gist.github.com/user-attachments/assets/727a628d-a008-4dd4-99ec-3ec4ed387651" />
+<img width="954" height="1246" alt="image" src="https://github.com/user-attachments/assets/7e53ec4e-1a29-4396-a546-36269f7f56b7" />
 
 Beneath this architectural layer lies a rich set of **capabilities**. The gateway maintains a **registry** of available servers and tools, allowing agents to discover and bind to them dynamically. It handles **authentication and authorization (AuthN/AuthZ)**, ensuring only approved entities can access sensitive resources. It performs **translations** between schemas or tool definitions to preserve interoperability, and provides **observability** across all interactions for auditing and performance tuning. Other capabilities include **routing and proxying**, **networking controls**, **virtual server orchestration**, **LLM testing**, and **prompt filtering**—each adding another layer of safety, control, and insight.
 
