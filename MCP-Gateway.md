@@ -3,10 +3,8 @@
 | **Title** | MCP Gateway Criteria |
 | **Description** | Criteria and guidelines for implementing an MCP Gateway |
 | **Status** | Draft |
-| **Last Updated** | |
 | **Version** | 0.0.1 |
 | **Author** | Andor Kesselman (andor@agentoverlay.com) |
-| **Related Resources** | |
 
 ## Introduction
 
@@ -29,13 +27,13 @@ Each criterion is weighted by priority: *must-have (P0)* features carry triple w
 
 The **MCP Gateway** serves as the central coordination and control layer within the Model Context Protocol ecosystem. It manages how autonomous agents (MCP Clients) interact with tools and services (MCP Servers), defining clear trust boundaries both inside and outside an organization. In essence, it is the **policy and routing hub** for all agentic traffic—governing what can talk to what, under which conditions, and with what level of visibility.
 
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/fd2816c1-ff05-4194-b4f6-e5d0233f6537" />
+<img width="1748" height="1136" alt="image" src="https://gist.github.com/user-attachments/assets/ddc19259-21a9-40e9-b470-d4c2619d98f6" />
 
 As shown in the high-level architecture diagram, an MCP Gateway typically sits between hosted MCP Servers and the clients that use them. Within an enterprise, this allows the gateway to function as an **internal trust boundary**, unifying multiple servers into a single access layer. All requests from agents—whether they involve querying data, invoking tools, or retrieving contextual information—flow through the gateway, where they can be authenticated, authorized, and observed in real time. This ensures that internal systems remain consistent and compliant without slowing down innovation or experimentation.
 
 At the same time, the gateway also manages the **external boundary** of an organization’s trust domain. It acts as the secure bridge to external partners, ecosystems, or marketplaces of MCP clients and servers. By brokering these cross-boundary interactions, the gateway can apply enterprise policy—such as filtering prompts, enforcing rate limits, or anonymizing data—before information leaves the internal network. This dual role makes the MCP Gateway a foundational piece of infrastructure for enterprises that want to safely participate in the emerging, interconnected agent economy.
 
-<img height="600" alt="image" src="https://github.com/user-attachments/assets/7e53ec4e-1a29-4396-a546-36269f7f56b7" />
+<img width="954" height="1246" alt="image" src="https://gist.github.com/user-attachments/assets/727a628d-a008-4dd4-99ec-3ec4ed387651" />
 
 Beneath this architectural layer lies a rich set of **capabilities**. The gateway maintains a **registry** of available servers and tools, allowing agents to discover and bind to them dynamically. It handles **authentication and authorization (AuthN/AuthZ)**, ensuring only approved entities can access sensitive resources. It performs **translations** between schemas or tool definitions to preserve interoperability, and provides **observability** across all interactions for auditing and performance tuning. Other capabilities include **routing and proxying**, **networking controls**, **virtual server orchestration**, **LLM testing**, and **prompt filtering**—each adding another layer of safety, control, and insight.
 
@@ -85,55 +83,55 @@ The **total score** for a gateway is computed as the weighted sum of all categor
 
 ### Sub-Categories
 
-| **Category ID** | **Criterion ID** | **Category** | **Criterion** | **Description** | **Considerations** |
-| -------------- | ---------------- | ----------- | ------------- | --------------- | ------------------ |
-| **C1** | **C1.1** | Core Protocol & Agent Logic | Full MCP Compliance | Ensures interoperability with the MCP protocol and agents across different implementations. | Check support for latest MCP spec and primitives such as tasks, resource streaming and tool invocation. |
-| **C1** | **C1.2** | Core Protocol & Agent Logic | Server Registry | A central catalog that registers available MCP servers and tools. | Look for dynamic registration, capability discovery, and API to list tools. |
-| **C1** | **C1.3** | Core Protocol & Agent Logic | Federation | Allows composition of multiple servers into a unified namespace. | Check for virtual servers, namespace isolation and cross-server orchestration. |
-| **C1** | **C1.4** | Core Protocol & Agent Logic | Protocol Translation | Supports multiple transports such as stdio, Server-Sent Events and HTTP. | Evaluate automatic conversion across protocols for compatibility with different runtimes. |
-| **C1** | **C1.5** | Core Protocol & Agent Logic | REST‑to‑MCP Wrapper | Ability to expose existing REST APIs as MCP tools. | Look for OpenAPI import, auth passthrough and seamless conversion. |
-| **C1** | **C1.6** | Core Protocol & Agent Logic | Tool Discovery | Mechanism to introspect server capabilities and list tools, resources or schemas. | Check for API endpoints that enumerate tools and provide schema/parameters. |
-| **C1** | **C1.7** | Core Protocol & Agent Logic | Session Management | Maintains stateful sessions between clients and servers for persistent interactions. | Assess session persistence, concurrency handling and ability to resume after failures. |
-| **C1** | **C1.8** | Core Protocol & Agent Logic | Streaming Support | Provides real-time responses via streaming protocols like SSE or gRPC. | Check for backpressure handling and support for bidirectional streams. |
-| **C2** | **C2.1** | Security & Compliance | Client Authentication | Mechanisms for verifying the identity of calling clients. | Verify support for OAuth 2.0, OIDC, API keys and mutual TLS. |
-| **C2** | **C2.2** | Security & Compliance | Authorization/RBAC | Controls which agents can call which tools. | Look for per-tool permissions, role-based access control and team scopes. |
-| **C2** | **C2.3** | Security & Compliance | Server Authentication | Verifies the identity of registered servers to prevent rogue services. | Evaluate server registration authentication and support for mTLS. |
-| **C2** | **C2.4** | Security & Compliance | Sandboxing | Isolation of tool execution from the host environment to contain security risks. | Check for container, VM or WASM isolation, resource limits and egress filtering. |
-| **C2** | **C2.5** | Security & Compliance | Secret Management | Secure storage and retrieval of credentials and API keys. | Assess integration with secret stores like Vault or cloud key managers and support for rotation. |
-| **C2** | **C2.6** | Security & Compliance | Audit Logging | Capture immutable logs of requests and responses for compliance and forensics. | Look for full request/response capture, tamper-proof storage and queryability. |
-| **C2** | **C2.7** | Security & Compliance | PII Redaction | Automatic removal or masking of personally identifiable information. | Check for regex-based and ML-based detection; support for structured and unstructured data. |
-| **C2** | **C2.8** | Security & Compliance | Network Isolation | Prevents lateral movement and enforces zero-trust networking principles. | Assess egress filtering, network segmentation and zero-trust policies. |
-| **C2** | **C2.9** | Security & Compliance | Threat Detection | Detects anomalies and attacks like prompt injection or tool poisoning. | Look for runtime anomaly detection and signature-based protections. |
-| **C2** | **C2.10** | Security & Compliance | Compliance Mappings | Alignment with regulations such as GDPR, HIPAA, SOX or FedRAMP. | Check for certifications or attestations and features supporting compliance (data residency, encryption). |
-| **C3** | **C3.1** | Performance & Scalability | Latency Overhead | Added latency introduced by the gateway; low overhead is critical for interactive agents. | Look for P50/P95/P99 latency metrics and optimization (e.g., in-memory caching). |
-| **C3** | **C3.2** | Performance & Scalability | Throughput | Maximum number of requests per second each node can handle. | Evaluate horizontal scalability and concurrency limits. |
-| **C3** | **C3.3** | Performance & Scalability | Session Capacity | Number of concurrent sessions that can be maintained. | Assess connection limits, memory footprint and session storage. |
-| **C3** | **C3.4** | Performance & Scalability | High Availability | Gateway's ability to remain operational despite failures. | Check for multi-zone deployment, automatic failover and SLO commitments. |
-| **C3** | **C3.5** | Performance & Scalability | Resource Efficiency | Optimises CPU and memory usage to reduce cost. | Look at footprint, start-up time and overhead on underlying workloads. |
-| **C3** | **C3.6** | Performance & Scalability | Auto‑scaling |  |  |
-| **C4** | **C4.1** | Operations & Reliability | Observability | Ability to collect and export metrics, logs and traces. | Ensure OTEL export, integration with monitoring stacks and correlation of events. |
-| **C4** | **C4.2** | Operations & Reliability | Health Checks | Probes to verify liveness and readiness for deployments. | Check for HTTP/gRPC health endpoints and Kubernetes probe configuration. |
-| **C4** | **C4.3** | Operations & Reliability | Circuit Breakers | Mechanisms to prevent cascading failures and allow graceful recovery. | Look for automatic retries, backoff and failover logic. |
-| **C4** | **C4.4** | Operations & Reliability | Configuration | Flexibility to change settings without downtime and support for GitOps. | Assess hot reload, declarative configuration and validation tools. |
-| **C4** | **C4.5** | Operations & Reliability | Debugging Tools | Tools to trace and replay requests or inspect traffic. | Look for debug UIs, traffic inspection and request replay features. |
-| **C4** | **C4.6** | Operations & Reliability | Alerting | Notifications when performance thresholds are breached or anomalies occur. | Evaluate threshold-based and anomaly detection alerts integrated with operations systems. |
-| **C4** | **C4.7** | Operations & Reliability | Backup & Recovery | Procedures to back up registries and restore configurations. | Look for export/import capabilities, database snapshots and disaster recovery guides. |
-| **C4** | **C4.8** | Operations & Reliability | Upgrade Strategy | Support for zero-downtime updates. | Check for rolling updates, blue-green or canary deployments. |
-| **C5** | **C5.1** | Developer Experience | Admin UI | Graphical interface to manage servers and policies. | Evaluate usability, multi-tenancy support and role segregation. |
-| **C5** | **C5.2** | Developer Experience | CLI Tools | Command-line utilities for automation. | Check for scripting support, bulk operations and integration with CI/CD. |
-| **C5** | **C5.3** | Developer Experience | API Documentation | Clarity of APIs via OpenAPI specs, code examples and tutorials. | Look for comprehensive docs, sample code and interactive portals. |
-| **C5** | **C5.4** | Developer Experience | SDK Support | Availability of client libraries for different languages. | Check languages supported and community contributions. |
-| **C5** | **C5.5** | Developer Experience | Local Development | Ease of running gateways locally for testing. | Assess Docker Compose files, local emulators and dev guides. |
-| **C5** | **C5.6** | Developer Experience | Server Templates | Pre-built templates and generators for new servers. | Look for boilerplate code, scaffolding tools and example servers. |
-| **C5** | **C5.7** | Developer Experience | Testing Framework | Support for integration or unit testing of tools and policies. | Check for mocks, sandboxes and test harnesses. |
-| **C5** | **C5.8** | Developer Experience | Migration Tools | Assistance in adopting the gateway and importing existing definitions. | Evaluate import/export from other gateways and data migration paths. |
-| **C6** | **C6.1** | Architecture & Integration | Deployment Models | Options for running the gateway (SaaS, self-hosted, hybrid, air-gapped). | Ensure the model aligns with compliance and operational needs. |
-| **C6** | **C6.2** | Architecture & Integration | Platform Support | Supported infrastructure environments (Kubernetes, Docker, VMs, serverless). | Check for official Helm charts, containers and serverless adapters. |
-| **C6** | **C6.3** | Architecture & Integration | Cloud Providers | Ability to deploy on multiple cloud providers or on-premise. | Evaluate support for AWS, Azure, GCP and bare metal. |
-| **C6** | **C6.4** | Architecture & Integration | IdP Integration | Integration with identity providers for SSO. | Check support for Okta, Azure AD, Auth0, Keycloak and SAML. |
-| **C6** | **C6.5** | Architecture & Integration | Secrets Backend | Backend services for storing credentials securely. | Look for integration with Vault, AWS Secrets Manager, Azure Key Vault or GCP Secret Manager. |
-| **C6** | **C6.6** | Architecture & Integration | Observability Stack | Out-of-the-box integration with monitoring tools (Prometheus, Datadog, Splunk). | Assess support for metrics exporters and log sinks. |
-| **C6** | **C6.7** | Architecture & Integration | Service Mesh | Support for Istio, Linkerd or other service meshes. | Check for sidecar or native integration and policy enforcement. |
-| **C6** | **C6.8** | Architecture & Integration | Policy Engine | External policy enforcement using OPA or similar engines. | Look for support to call out to OPA/Cedar for fine-grained policies. |
-| **C6** | **C6.9** | Architecture & Integration | Plugin System | Mechanism for extending gateway functionality via plugins. | Check for WASM, Lua, Go or other plugin runtimes and extension points. |
-| **C6** | **C6.10** | Architecture & Integration | API Compatibility | Integration with LLM gateways or AI platforms and compatibility with other API standards. | Assess support for open standards, ability to call external AI models or LLMs. |
+| Category | Criterion | Description | Considerations |
+| ----- | ----- | ----- | ----- |
+| Core Protocol & Agent Logic | Full MCP Compliance | Ensures interoperability with the MCP protocol and agents across different implementations. | Check support for latest MCP spec and primitives such as tasks, resource streaming and tool invocation. |
+| Core Protocol & Agent Logic | Server Registry | A central catalog that registers available MCP servers and tools. | Look for dynamic registration, capability discovery, and API to list tools. |
+| Core Protocol & Agent Logic | Federation | Allows composition of multiple servers into a unified namespace. | Check for virtual servers, namespace isolation and cross-server orchestration. |
+| Core Protocol & Agent Logic | Protocol Translation | Supports multiple transports such as stdio, Server-Sent Events and HTTP. | Evaluate automatic conversion across protocols for compatibility with different runtimes. |
+| Core Protocol & Agent Logic | REST‑to‑MCP Wrapper | Ability to expose existing REST APIs as MCP tools. | Look for OpenAPI import, auth passthrough and seamless conversion. |
+| Core Protocol & Agent Logic | Tool Discovery | Mechanism to introspect server capabilities and list tools, resources or schemas. | Check for API endpoints that enumerate tools and provide schema/parameters. |
+| Core Protocol & Agent Logic | Session Management | Maintains stateful sessions between clients and servers for persistent interactions. | Assess session persistence, concurrency handling and ability to resume after failures. |
+| Core Protocol & Agent Logic | Streaming Support | Provides real-time responses via streaming protocols like SSE or gRPC. | Check for backpressure handling and support for bidirectional streams. |
+| Security & Compliance | Client Authentication | Mechanisms for verifying the identity of calling clients. | Verify support for OAuth 2.0, OIDC, API keys and mutual TLS. |
+| Security & Compliance | Authorization/RBAC | Controls which agents can call which tools. | Look for per-tool permissions, role-based access control and team scopes. |
+| Security & Compliance | Server Authentication | Verifies the identity of registered servers to prevent rogue services. | Evaluate server registration authentication and support for mTLS. |
+| Security & Compliance | Sandboxing | Isolation of tool execution from the host environment to contain security risks. | Check for container, VM or WASM isolation, resource limits and egress filtering. |
+| Security & Compliance | Secret Management | Secure storage and retrieval of credentials and API keys. | Assess integration with secret stores like Vault or cloud key managers and support for rotation. |
+| Security & Compliance | Audit Logging | Capture immutable logs of requests and responses for compliance and forensics. | Look for full request/response capture, tamper-proof storage and queryability. |
+| Security & Compliance | PII Redaction | Automatic removal or masking of personally identifiable information. | Check for regex-based and ML-based detection; support for structured and unstructured data. |
+| Security & Compliance | Network Isolation | Prevents lateral movement and enforces zero-trust networking principles. | Assess egress filtering, network segmentation and zero-trust policies. |
+| Security & Compliance | Threat Detection | Detects anomalies and attacks like prompt injection or tool poisoning. | Look for runtime anomaly detection and signature-based protections. |
+| Security & Compliance | Compliance Mappings | Alignment with regulations such as GDPR, HIPAA, SOX or FedRAMP. | Check for certifications or attestations and features supporting compliance (data residency, encryption). |
+| Performance & Scalability | Latency Overhead | Added latency introduced by the gateway; low overhead is critical for interactive agents. | Look for P50/P95/P99 latency metrics and optimization (e.g., in-memory caching). |
+| Performance & Scalability | Throughput | Maximum number of requests per second each node can handle. | Evaluate horizontal scalability and concurrency limits. |
+| Performance & Scalability | Session Capacity | Number of concurrent sessions that can be maintained. | Assess connection limits, memory footprint and session storage. |
+| Performance & Scalability | High Availability | Gateway’s ability to remain operational despite failures. | Check for multi-zone deployment, automatic failover and SLO commitments. |
+| Performance & Scalability | Resource Efficiency | Optimises CPU and memory usage to reduce cost. | Look at footprint, start-up time and overhead on underlying workloads. |
+| Performance & Scalability | Auto‑scaling |  |  |
+| Operations & Reliability | Observability | Ability to collect and export metrics, logs and traces. | Ensure OTEL export, integration with monitoring stacks and correlation of events. |
+| Operations & Reliability | Health Checks | Probes to verify liveness and readiness for deployments. | Check for HTTP/gRPC health endpoints and Kubernetes probe configuration. |
+| Operations & Reliability | Circuit Breakers | Mechanisms to prevent cascading failures and allow graceful recovery. | Look for automatic retries, backoff and failover logic. |
+| Operations & Reliability | Configuration | Flexibility to change settings without downtime and support for GitOps. | Assess hot reload, declarative configuration and validation tools. |
+| Operations & Reliability | Debugging Tools | Tools to trace and replay requests or inspect traffic. | Look for debug UIs, traffic inspection and request replay features. |
+| Operations & Reliability | Alerting | Notifications when performance thresholds are breached or anomalies occur. | Evaluate threshold-based and anomaly detection alerts integrated with operations systems. |
+| Operations & Reliability | Backup & Recovery | Procedures to back up registries and restore configurations. | Look for export/import capabilities, database snapshots and disaster recovery guides. |
+| Operations & Reliability | Upgrade Strategy | Support for zero-downtime updates. | Check for rolling updates, blue-green or canary deployments. |
+| Developer Experience | Admin UI | Graphical interface to manage servers and policies. | Evaluate usability, multi-tenancy support and role segregation. |
+| Developer Experience | CLI Tools | Command-line utilities for automation. | Check for scripting support, bulk operations and integration with CI/CD. |
+| Developer Experience | API Documentation | Clarity of APIs via OpenAPI specs, code examples and tutorials. | Look for comprehensive docs, sample code and interactive portals. |
+| Developer Experience | SDK Support | Availability of client libraries for different languages. | Check languages supported and community contributions. |
+| Developer Experience | Local Development | Ease of running gateways locally for testing. | Assess Docker Compose files, local emulators and dev guides. |
+| Developer Experience | Server Templates | Pre-built templates and generators for new servers. | Look for boilerplate code, scaffolding tools and example servers. |
+| Developer Experience | Testing Framework | Support for integration or unit testing of tools and policies. | Check for mocks, sandboxes and test harnesses. |
+| Developer Experience | Migration Tools | Assistance in adopting the gateway and importing existing definitions. | Evaluate import/export from other gateways and data migration paths. |
+| Architecture & Integration | Deployment Models | Options for running the gateway (SaaS, self-hosted, hybrid, air-gapped). | Ensure the model aligns with compliance and operational needs. |
+| Architecture & Integration | Platform Support | Supported infrastructure environments (Kubernetes, Docker, VMs, serverless). | Check for official Helm charts, containers and serverless adapters. |
+| Architecture & Integration | Cloud Providers | Ability to deploy on multiple cloud providers or on-premise. | Evaluate support for AWS, Azure, GCP and bare metal. |
+| Architecture & Integration | IdP Integration | Integration with identity providers for SSO. | Check support for Okta, Azure AD, Auth0, Keycloak and SAML. |
+| Architecture & Integration | Secrets Backend | Backend services for storing credentials securely. | Look for integration with Vault, AWS Secrets Manager, Azure Key Vault or GCP Secret Manager. |
+| Architecture & Integration | Observability Stack | Out-of-the-box integration with monitoring tools (Prometheus, Datadog, Splunk). | Assess support for metrics exporters and log sinks. |
+| Architecture & Integration | Service Mesh | Support for Istio, Linkerd or other service meshes. | Check for sidecar or native integration and policy enforcement. |
+| Architecture & Integration | Policy Engine | External policy enforcement using OPA or similar engines. | Look for support to call out to OPA/Cedar for fine-grained policies. |
+| Architecture & Integration | Plugin System | Mechanism for extending gateway functionality via plugins. | Check for WASM, Lua, Go or other plugin runtimes and extension points. |
+| Architecture & Integration | API Compatibility | Integration with LLM gateways or AI platforms and compatibility with other API standards. | Assess support for open standards, ability to call external AI models or LLMs. |
