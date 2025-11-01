@@ -11,8 +11,9 @@
           "host": "github",
           "account": "agentoverlay",
           "repo": "agentic-governance-technology-guides"
-      },
-      {
+      }
+    },
+    {
         "title": "MCP Gateway Criteria",
         "spec_directory": "./guides",
         "output_path": "./dist/mcp-gateway",
