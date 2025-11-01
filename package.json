@@ -1,0 +1,15 @@
+{
+  "name": "guides",
+  "version": "1.0.0",
+  "description": "This repository contains public-facing guides designed to help organizations make informed technology decisions in the rapidly evolving space of autonomous agents, AI platforms, and related infrastructure.",
+  "scripts": {
+    "render": "node -e \"require('spec-up')({ nowatch: true })\"",
+    "edit": "node -e \"require('spec-up')()\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "spec-up": "0.10.5"
+  }
+}
