@@ -1,9 +1,21 @@
 {
     "specs": [
+    {
+        "title": "Agentic Governance Technology Guides",
+        "spec_directory": "./",
+        "output_path": "./dist/",
+        "markdown_paths": ["./README.md"],
+        "logo": "https://www.agentoverlay.com/logo.png",
+        "logo_link": "https://www.agentoverlay.com",
+        "source": {
+          "host": "github",
+          "account": "agentoverlay",
+          "repo": "agentic-governance-technology-guides"
+      },
       {
         "title": "MCP Gateway Criteria",
-        "spec_directory": "./",
-        "output_path": "./dist/mcp-gateway-criteria",
+        "spec_directory": "./guides",
+        "output_path": "./dist/mcp-gateway",
         "markdown_paths": ["MCP-Gateway.md"],
         "logo": "https://www.agentoverlay.com/logo.png",
         "logo_link": "https://www.agentoverlay.com",
