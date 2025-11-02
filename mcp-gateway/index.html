@@ -141,6 +141,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p>Defaults may be chosen by industry alignment, but your organization may have it’s own requirements and may decide to weigh each of the priorities differently.</p>
 <p>The <strong>total score</strong> for a gateway is computed as the weighted sum of all category scores, normalized to produce an aggregate rating that reflects overall maturity and alignment with enterprise needs. This allows readers to identify strengths and trade-offs—for example, a gateway with strong developer experience but limited compliance features—while maintaining transparency in how evaluations are derived.</p>
 <h3 id="high-level-categories"><a class="toc-anchor" href="#high-level-categories" >§</a> High Level Categories</h3>
+<p>The follow are high level categories. For a simple calculation, you may score against these high level categories instead of through the Sub-Categories, which represent a more detailed evaluation.</p>
 <table>
 <thead>
 <tr>
@@ -197,6 +198,10 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </ul>
 <p>This referencing system makes it easy to track which capabilities are being evaluated, compare implementations across different gateways, and maintain consistency in documentation and scoring artifacts.</p>
 <h3 id="sub-categories"><a class="toc-anchor" href="#sub-categories" >§</a> Sub-Categories</h3>
+<p>Each high-level category can be further broken down into <strong>sub-categories</strong>, represented as criteria with unique hierarchical identifiers (e.g., C2.5, C4.3). These sub-categories provide a more granular approach to evaluating an MCP Gateway’s capabilities.</p>
+<p>Scoring at the sub-category (criterion) level enables detailed assessments that capture not only whether a feature exists, but also how robust and enterprise-ready its implementation is. This level of detail supports more nuanced comparisons between gateways—and helps organizations identify areas of strength or potential risk tailored to their specific use cases.</p>
+<p>When conducting a full evaluation, consider using the sub-category criteria below as your primary checklist. For rapid, high-level assessments, scoring just the main categories may be sufficient.</p>
+<p>A comprehensive scoring sheet should reference both category and sub-category (criterion) codes to ensure clarity, avoid ambiguity, and empower efficient cross-team collaboration during procurement, architecture reviews, or compliance audits.</p>
 <table>
 <thead>
 <tr>
@@ -600,6 +605,8 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <li><strong>Considerations</strong>: Specific things to check, metrics to review, or documentation to examine</li>
 </ul>
 <p>This governance ensures that all criteria remain objective, comparable, and useful for making informed decisions about MCP Gateway implementations. Contributions that propose new sub-categories following these principles are welcome and will be accepted through the standard pull request process.</p>
+<h2 id="current-scores"><a class="toc-anchor" href="#current-scores" >§</a> Current Scores</h2>
+<p>TODO. This will feature a matrix of scores.</p>
 
                     </article>    
       
@@ -647,6 +654,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <li><a href="#criterion-template" >Criterion Template</a></li>
 </ul>
 </li>
+<li><a href="#current-scores" >Current Scores</a></li>
 </ul>
 
                       </div>
