@@ -8,7 +8,7 @@ Each guide provides comprehensive evaluation frameworks, criteria, and best prac
 
 | **Guide** | **Description** | **Status** | **Version** |
 |-----------|----------------|------------|-------------|
-| [MCP Gateway Criteria](./MCP-Gateway.md) | Criteria and guidelines for implementing an MCP Gateway | Draft | 0.0.1 |
+| [MCP Gateway Criteria](/mcp-gateway) | Criteria and guidelines for implementing an MCP Gateway | Draft | 0.0.1 |
 
 ## Purpose
 
