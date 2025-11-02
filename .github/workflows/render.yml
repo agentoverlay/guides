@@ -23,6 +23,10 @@ jobs:
           node -e "require('spec-up')({ nowatch: true })"
           rm -rf node_modules
 
+      - name: Copy CNAME file
+        run: |
+            cp CNAME ./dist/CNAME
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main'
