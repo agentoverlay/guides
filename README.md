@@ -6,9 +6,9 @@ Each guide provides comprehensive evaluation frameworks, criteria, and best prac
 
 ## Available Guides
 
-| **Guide** | **Description** | **Status** | **Version** |
+| **Guide** | **Description** | **Status** | **Version** | **File** |
 |-----------|----------------|------------|-------------|
-| [MCP Gateway Criteria](/mcp-gateway) | Criteria and guidelines for implementing an MCP Gateway | Draft | 0.0.1 |
+| [MCP Gateway Criteria](https://guides.agentoverlay.com/mcp-gateway) | Criteria and guidelines for implementing an MCP Gateway | Draft | 0.0.1 | [link](./guides/MCP-Gateway.md) |
 
 ## Purpose
 
