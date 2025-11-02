@@ -71,8 +71,9 @@ Defaults may be chosen by industry alignment, but your organization may have it'
 
 The **total score** for a gateway is computed as the weighted sum of all category scores, normalized to produce an aggregate rating that reflects overall maturity and alignment with enterprise needs. This allows readers to identify strengths and trade-offs—for example, a gateway with strong developer experience but limited compliance features—while maintaining transparency in how evaluations are derived.
 
-
 ### High Level Categories
+
+The follow are high level categories. For a simple calculation, you may score against these high level categories instead of through the Sub-Categories, which represent a more detailed evaluation. 
 
 | **Code** | **Category**                                | **Description**                                                                                                                                                                                                                                                                                                                                    |
 | -------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -97,6 +98,14 @@ Each category and criterion in this evaluation framework is assigned a unique id
 This referencing system makes it easy to track which capabilities are being evaluated, compare implementations across different gateways, and maintain consistency in documentation and scoring artifacts.
 
 ### Sub-Categories
+
+Each high-level category can be further broken down into **sub-categories**, represented as criteria with unique hierarchical identifiers (e.g., C2.5, C4.3). These sub-categories provide a more granular approach to evaluating an MCP Gateway’s capabilities. 
+
+Scoring at the sub-category (criterion) level enables detailed assessments that capture not only whether a feature exists, but also how robust and enterprise-ready its implementation is. This level of detail supports more nuanced comparisons between gateways—and helps organizations identify areas of strength or potential risk tailored to their specific use cases.
+
+When conducting a full evaluation, consider using the sub-category criteria below as your primary checklist. For rapid, high-level assessments, scoring just the main categories may be sufficient.
+  
+A comprehensive scoring sheet should reference both category and sub-category (criterion) codes to ensure clarity, avoid ambiguity, and empower efficient cross-team collaboration during procurement, architecture reviews, or compliance audits.
 
 | **Category ID** | **Criterion ID** | **Criterion** | **Description** | **Considerations** |
 | -------------- | ---------------- | ------------- | ---------------- | ------------------ |
@@ -200,3 +209,7 @@ When documenting a new criterion, use this structure:
 - **Considerations**: Specific things to check, metrics to review, or documentation to examine
 
 This governance ensures that all criteria remain objective, comparable, and useful for making informed decisions about MCP Gateway implementations. Contributions that propose new sub-categories following these principles are welcome and will be accepted through the standard pull request process.
+
+## Current Scores
+
+TODO. This will feature a matrix of scores.
